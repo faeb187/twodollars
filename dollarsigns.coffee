@@ -138,7 +138,6 @@ module.exports = (->
 
     # look for requested parent
     selMatch = ( $elm, sel ) ->
-      console.log $elm
       if $elm.matches( sel ) then $elm else selMatch $elm.parentNode, sel
      
     selMatch $elm.parentNode, sel
