@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   // devtool: "inline-source-map",
-  entry: "./src/dollarsigns.ts",
+  entry: "./src/twodollars.ts",
   mode: "production",
   output: { filename: "main.min.js" },
   /*optimization: {
