@@ -1,12 +1,19 @@
-# dollarsigns
+# $$
 
-native JS helper functions...
+lightweight jQuery alternative
+
+## Installation
 
 ```bash
-# compile to JS
-coffee -c -b dollarsigns.coffee
-
-# use it like any NPM module
-$$ = require 'dollarsigns'
-
+npm i dollarsigns
 ```
+
+## Usage
+
+```typescript
+import { $$ } from "dollarsigns";
+```
+
+## API
+
+@todo
