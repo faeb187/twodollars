@@ -1,6 +1,7 @@
 {
   "name": "dollarsigns",
   "version": "1.0.0",
+  "author": "faeb187 <fabio.gartenmann@gmail.com>",
   "description": "lightweight jQuery alternative",
   "main": "dist/main.min.js",
   "test": "jest --verbose --forceExit --coverage --detectOpenHandles --passWithNoTests",
@@ -37,5 +38,6 @@
     "typescript": "^3.9.10",
     "webpack": "^5.57.1",
     "webpack-cli": "^4.8.0"
-  }
+  },
+  "license": "MIT"
 }
