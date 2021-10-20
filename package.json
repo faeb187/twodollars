@@ -1,6 +1,6 @@
 {
   "name": "twodollars",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "faeb187 <fabio.gartenmann@gmail.com>",
   "description": "lightweight jQuery alternative",
   "main": "dist/main.min.js",
@@ -13,6 +13,7 @@
     ]
   },
   "scripts": {
+    "install": "npm start",
     "lint": "eslint . --ext .ts",
     "start": "webpack --config webpack.config.js"
   },
