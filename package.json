@@ -1,6 +1,6 @@
 {
   "name": "twodollars",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "faeb187 <fabio.gartenmann@gmail.com>",
   "description": "lightweight jQuery alternative",
   "main": "dist/main.min.js",
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "prepack": "npm run build",
+    "prepare": "npm run build",
     "lint": "eslint . --ext .ts"
   },
   "repository": {
