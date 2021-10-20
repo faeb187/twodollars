@@ -1,13 +1,13 @@
-export type DollarSign = {
+export type TwoDollars = {
   addAttr: (
     elmeent: HTMLElement,
     attributes: Record<string, string>
-  ) => DollarSign;
-  addClass: (element: HTMLElement, cn: string) => DollarSign;
-  append: (toAppend: HTMLElement, target: HTMLElement) => DollarSign;
+  ) => TwoDollars;
+  addClass: (element: HTMLElement, cn: string) => TwoDollars;
+  append: (toAppend: HTMLElement, target: HTMLElement) => TwoDollars;
   create: (element: string, attributes?: Record<string, string>) => HTMLElement;
-  css: (element: HTMLElement, props: Record<string, string>) => DollarSign;
-  destroy: (event: DomEvent) => DollarSign;
+  css: (element: HTMLElement, props: Record<string, string>) => TwoDollars;
+  destroy: (event: DomEvent) => TwoDollars;
   extend: (
     target: Record<string, string>,
     extension: Record<string, string>
@@ -19,14 +19,14 @@ export type DollarSign = {
   hasClass: (element: HTMLElement, cn: string) => boolean;
   history: { go: (name: string, path: string) => void };
   index: (element: HTMLElement) => number;
-  listen: (event: DomEvent) => DollarSign;
+  listen: (event: DomEvent) => TwoDollars;
   measure: (str: string, fontSize: number) => { h: number; w: number };
   parent: (element: HTMLElement) => HTMLElement;
   parse: (str: string) => Document;
   post: (url: string, data: Record<string, string>) => Promise<string>;
   preload: (preloadOptions: PreloadOptions) => void;
-  removeClass: (element: HTMLElement, cn: string) => DollarSign;
-  toggleClass: (element: HTMLElement, cn: string) => DollarSign;
+  removeClass: (element: HTMLElement, cn: string) => TwoDollars;
+  toggleClass: (element: HTMLElement, cn: string) => TwoDollars;
   ucFirst: (str: string) => string;
 };
 
@@ -45,16 +45,17 @@ export default (() => {
   const d = document;
   const dp = new DOMParser();
 
-  const $$: DollarSign = {
+  const $$: TwoDollars = {
     create: (
       element: string,
       attributes?: Record<string, string>
     ): HTMLElement => {
       const $element = d.createElement(element.slice(1, -2));
 
-      attributes && Object.keys(attributes).forEach((key: string) =>
-        $element.setAttribute(key, attributes[key])
-      );
+      attributes &&
+        Object.keys(attributes).forEach((key: string) =>
+          $element.setAttribute(key, attributes[key])
+        );
       return $element;
     },
 
