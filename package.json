@@ -13,7 +13,7 @@
     ]
   },
   "scripts": {
-    "install": "npm start",
+    "prepack": "npm start",
     "lint": "eslint . --ext .ts",
     "start": "webpack --config webpack.config.js"
   },
