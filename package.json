@@ -1,11 +1,11 @@
 {
-  "name": "dollarsigns",
+  "name": "twodollars",
   "version": "1.0.0",
   "author": "faeb187 <fabio.gartenmann@gmail.com>",
   "description": "lightweight jQuery alternative",
   "main": "dist/main.min.js",
   "test": "jest --verbose --forceExit --coverage --detectOpenHandles --passWithNoTests",
-  "types": "./types/dollarsigns.d.ts",
+  "types": "./types/twodollars.d.ts",
   "jest": {
     "preset": "ts-jest",
     "modulePathIgnorePatterns": [
@@ -18,14 +18,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/faeb187/dollarsigns.git"
+    "url": "git+https://github.com/faeb187/twodollars.git"
   },
-  "author": "faeb187",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/faeb187/dollarsigns/issues"
+    "url": "https://github.com/faeb187/twodollars/issues"
   },
-  "homepage": "https://github.com/faeb187/dollarsigns#readme",
+  "homepage": "https://github.com/faeb187/twodollars#readme",
   "devDependencies": {
     "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
@@ -38,6 +37,5 @@
     "typescript": "^3.9.10",
     "webpack": "^5.57.1",
     "webpack-cli": "^4.8.0"
-  },
-  "license": "MIT"
+  }
 }

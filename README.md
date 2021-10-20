@@ -5,14 +5,16 @@ lightweight jQuery alternative
 ## Installation
 
 ```bash
-npm i dollarsigns
+npm i twodollars
 ```
 
 ## Usage
 
 ```typescript
-import { $$ } from "dollarsigns";
+import $$ from "twodollars";
 ```
+
+more documentation to follow...
 
 ## API
 
