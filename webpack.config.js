@@ -3,11 +3,11 @@ const path = require("path");
 module.exports = {
   // devtool: "inline-source-map",
   entry: "./src/twodollars.ts",
-  mode: "production",
+  mode: "development",
   output: { filename: "main.min.js" },
-  /*optimization: {
-    minimize: false,
-  },*/
+  optimization: {
+    minimize: true,
+  },
   resolve: {
     extensions: [".ts"],
   },
