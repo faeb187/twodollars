@@ -41,7 +41,7 @@ type PreloadOptions = {
   onFinish: (totalLoaded: number) => void;
 };
 
-export default (() => {
+export const $$ = (() => {
   const d = document;
   const dp = new DOMParser();
 
