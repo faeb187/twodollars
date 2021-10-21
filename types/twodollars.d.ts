@@ -34,5 +34,5 @@ declare type PreloadOptions = {
     onFileLoaded: (src: string) => void;
     onFinish: (totalLoaded: number) => void;
 };
-declare const _default: TwoDollars;
-export default _default;
+export declare const $$: TwoDollars;
+export {};

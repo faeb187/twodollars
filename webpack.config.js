@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
   // devtool: "inline-source-map",
   entry: "./src/twodollars.ts",
-  mode: "development",
+  mode: "production",
   output: { filename: "main.min.js" },
   optimization: {
     minimize: true,
