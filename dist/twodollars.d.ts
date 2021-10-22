@@ -1,5 +1,5 @@
-export declare type TwoDollars = {
-    addAttr: (elmeent: HTMLElement, attributes: Record<string, string>) => TwoDollars;
+declare type TwoDollars = {
+    addAttr: (element: HTMLElement, attributes: Record<string, string>) => TwoDollars;
     addClass: (element: HTMLElement, cn: string) => TwoDollars;
     append: (toAppend: HTMLElement, target: HTMLElement) => TwoDollars;
     create: (element: string, attributes?: Record<string, string>) => HTMLElement;
@@ -25,7 +25,7 @@ export declare type TwoDollars = {
     toggleClass: (element: HTMLElement, cn: string) => TwoDollars;
     ucFirst: (str: string) => string;
 };
-export declare type DomEvent = Event & {
+declare type DomEvent = Event & {
     handler: (event: Event) => void;
     target: HTMLElement;
 };
@@ -34,5 +34,5 @@ declare type PreloadOptions = {
     onFileLoaded: (src: string) => void;
     onFinish: (totalLoaded: number) => void;
 };
-export declare const $$: TwoDollars;
-export {};
+declare const $$: TwoDollars;
+export { $$ };
