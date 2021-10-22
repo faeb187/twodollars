@@ -3,17 +3,17 @@
 		{
 		"files": ["*.ts"],
 		"parserOptions":{
-			"project": ["./tsconfig.json"]
-		}
+			"sourceType": "module",
+			"project": "./tsconfig.json"
+		},
+		"parser": "@typescript-eslint/parser",
+		"plugins": ["@typescript-eslint"]
 	}],
-	"parser": "@typescript-eslint/parser",
-	"plugins": [
-		"@typescript-eslint"
-	],
 	"extends": [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
-		"plugin:@typescript-eslint/recommended-requiring-type-checking"
+		"plugin:@typescript-eslint/recommended-requiring-type-checking",
+		"plugin:prettier/recommended"
 	]
 }
