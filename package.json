@@ -10,7 +10,7 @@
     "dist"
   ],
   "main": "./dist/main.min.js",
-  "types": "./dist",
+  "types": "./dist/twodollars.d.ts",
   "jest": {
     "preset": "ts-jest",
     "modulePathIgnorePatterns": [
