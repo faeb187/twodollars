@@ -1,12 +1,14 @@
 {
   "name": "twodollars",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "author": "faeb187 <fabio.gartenmann@gmail.com>",
   "description": "lightweight jQuery alternative",
   "engines": {
     "node": ">= 16.5.0"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/main.min.js",
   "jest": {
     "preset": "ts-jest",
