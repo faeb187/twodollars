@@ -11,7 +11,7 @@ npm i twodollars
 ## Usage
 
 ```typescript
-import $$ from "twodollars";
+import { $$ } from "twodollars";
 ```
 
 more documentation to follow...
