@@ -1,6 +1,6 @@
 {
   "name": "twodollars",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "author": "faeb187 <fabio.gartenmann@gmail.com>",
   "description": "lightweight jQuery alternative",
   "engines": {
