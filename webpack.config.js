@@ -11,7 +11,12 @@ module.exports = {
       },
     ],
   },
-  output: { filename: "main.min.js" },
+  output: {
+    filename: "main.min.js",
+    libraryTarget: "umd",
+    library: "dollarSigns",
+    umdNamedDefine: true,
+  },
   optimization: {
     minimize: false,
     // sideEffects: false,
