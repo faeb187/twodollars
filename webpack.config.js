@@ -19,6 +19,5 @@ module.exports = {
   resolve: {
     extensions: [".ts"],
   },
-  stats: "verbose",
   target: "node",
 };
