@@ -44,7 +44,7 @@ type PreloadOptions = {
 const d = document;
 const dp = new DOMParser();
 
-const $$: TwoDollars = {
+const twoDollars: TwoDollars = {
   create: (
     element: string,
     attributes?: Record<string, string>
@@ -204,4 +204,4 @@ const $$: TwoDollars = {
   },
 };
 
-export { $$ };
+export { twoDollars };
