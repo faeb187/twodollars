@@ -65,19 +65,19 @@ const twoDollars: TwoDollars = {
 
   append: (toAppend: HTMLElement, target: HTMLElement) => {
     target.appendChild(toAppend);
-    return $$;
+    return twoDollars;
   },
 
   measure: (str: string, fontSize?: number) => {
-    const $helper = $$.create("<span/>", { innerText: str });
+    const $helper = twoDollars.create("<span/>", { innerText: str });
 
-    $$.css($helper, {
+    twoDollars.css($helper, {
       position: "absolute",
       left: "-9999px",
       top: "-9999px",
     });
 
-    fontSize && $$.css($helper, { fontSize: `${fontSize}px` });
+    fontSize && twoDollars.css($helper, { fontSize: `${fontSize}px` });
 
     document.body.appendChild($helper);
 
@@ -96,7 +96,7 @@ const twoDollars: TwoDollars = {
       Object.keys(props).forEach((key: string) =>
         $element.setAttribute("styles", `${key}: ${props[key]}`)
       );
-    return $$;
+    return twoDollars;
     // const v = window.getComputedStyle(elms)[obj];
     // return v.slice(-2) === "px" && v.indexOf(" ") === -1 ? parseFloat(v) : v;
   },
@@ -117,17 +117,17 @@ const twoDollars: TwoDollars = {
 
   addClass: (element: HTMLElement, cn: string) => {
     !element.classList.contains(cn) && element.classList.add(cn);
-    return $$;
+    return twoDollars;
   },
 
   removeClass: (element: HTMLElement, cn: string) => {
     element.classList.contains(cn) && element.classList.remove(cn);
-    return $$;
+    return twoDollars;
   },
 
   toggleClass: (element: HTMLElement, cn: string) => {
     element.classList.toggle(cn);
-    return $$;
+    return twoDollars;
   },
 
   addAttr: (element: HTMLElement, attributes?: Record<string, string>) => {
@@ -135,7 +135,7 @@ const twoDollars: TwoDollars = {
       Object.keys(attributes).forEach((key: string) =>
         element.setAttribute(key, attributes[key])
       );
-    return $$;
+    return twoDollars;
   },
 
   ucFirst: (str: string) => str.charAt(0).toUpperCase() + str.slice(1),
@@ -159,13 +159,13 @@ const twoDollars: TwoDollars = {
   listen: (event: DomEvent) => {
     const { handler, target, type } = event;
     target.addEventListener(type, handler);
-    return $$;
+    return twoDollars;
   },
 
   destroy: (event: DomEvent) => {
     const { handler, target, type } = event;
     if (handler) target.removeEventListener(type, handler);
-    return $$;
+    return twoDollars;
   },
 
   post: (url: string, data: Record<string, string>) => {
