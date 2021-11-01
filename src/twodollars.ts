@@ -94,7 +94,7 @@ const twoDollars: TwoDollars = {
   css: ($element: HTMLElement, props?: Record<string, string>) => {
     props &&
       Object.keys(props).forEach((key: string) =>
-        $element.setAttribute("styles", `${key}: ${props[key]}`)
+        $element.style.setProperty(key, props[key])
       );
     return twoDollars;
     // const v = window.getComputedStyle(elms)[obj];
