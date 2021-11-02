@@ -60,8 +60,9 @@ const twoDollars: TwoDollars = {
 
   find: (
     selector: string,
-    target: HTMLElement | DocumentFragment = document.body
-  ) => Array.from(target.querySelectorAll(selector)),
+    target: HTMLElement | DocumentFragment = document.documentElement
+  ): HTMLElement[] =>
+    Array.from(target.querySelectorAll(selector) || document.documentElement),
 
   append: (toAppend: HTMLElement, target: HTMLElement) => {
     target.appendChild(toAppend);
