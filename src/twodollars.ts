@@ -62,7 +62,7 @@ const twoDollars: TwoDollars = {
     selector: string,
     target: HTMLElement | DocumentFragment = document.documentElement
   ): HTMLElement[] =>
-    Array.from(target.querySelectorAll(selector) || document.documentElement),
+    Array.from(target.querySelectorAll(selector)) || [document.documentElement],
 
   append: (toAppend: HTMLElement, target: HTMLElement) => {
     target.appendChild(toAppend);
