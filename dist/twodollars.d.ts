@@ -17,7 +17,7 @@ declare type TwoDollars = {
         h: number;
         w: number;
     };
-    parent: (element: HTMLElement) => HTMLElement;
+    parent: (element: HTMLElement, selector?: string) => HTMLElement;
     parse: (str: string) => Document;
     post: (url: string, data: Record<string, string>) => Promise<string>;
     preload: (preloadOptions: PreloadOptions) => void;
