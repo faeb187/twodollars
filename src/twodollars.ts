@@ -1,3 +1,5 @@
+import deepmerge from "deepmerge";
+
 type TwoDollars = {
   addAttr: (
     element: HTMLElement,
@@ -7,11 +9,6 @@ type TwoDollars = {
   append: (toAppend: HTMLElement, target: HTMLElement) => TwoDollars;
   create: (element: string, attributes?: Record<string, string>) => HTMLElement;
   css: (element: HTMLElement, props: Record<string, string>) => TwoDollars;
-  destroy: (event: DomEvent) => TwoDollars;
-  extend: (
-    target: Record<string, string>,
-    extension: Record<string, string>
-  ) => Record<string, string>;
   find: (
     selector: string,
     target?: HTMLElement | DocumentFragment
@@ -19,8 +16,8 @@ type TwoDollars = {
   hasClass: (element: HTMLElement, cn: string) => boolean;
   history: { go: (name: string, path: string) => void };
   index: (element: HTMLElement) => number;
-  listen: (event: DomEvent) => TwoDollars;
   measure: (str: string, fontSize: number) => { h: number; w: number };
+  merge: (obj1: Partial<unknown>, obj2: Partial<unknown>) => unknown;
   parent: (element: HTMLElement, selector?: string) => HTMLElement;
   parse: (str: string) => Document;
   post: (url: string, data: Record<string, string>) => Promise<string>;
@@ -28,11 +25,6 @@ type TwoDollars = {
   removeClass: (element: HTMLElement, cn: string) => TwoDollars;
   toggleClass: (element: HTMLElement, cn: string) => TwoDollars;
   ucFirst: (str: string) => string;
-};
-
-type DomEvent = Event & {
-  handler: (event: Event) => void;
-  target: HTMLElement;
 };
 
 type PreloadOptions = {
@@ -57,7 +49,6 @@ const twoDollars: TwoDollars = {
       );
     return $element;
   },
-
   find: (
     selector: string,
     target: HTMLElement | DocumentFragment = d.body
@@ -66,12 +57,23 @@ const twoDollars: TwoDollars = {
       ? [d.documentElement]
       : Array.from(target.querySelectorAll(selector));
   },
-
   append: (toAppend: HTMLElement, target: HTMLElement) => {
     target.appendChild(toAppend);
     return twoDollars;
   },
-
+  css: ($element: HTMLElement, props?: Record<string, string>) => {
+    props &&
+      Object.keys(props).forEach((key: string) =>
+        $element.style.setProperty(key, props[key])
+      );
+    return twoDollars;
+    // const v = window.getComputedStyle(elms)[obj];
+    // return v.slice(-2) === "px" && v.indexOf(" ") === -1 ? parseFloat(v) : v;
+  },
+  history: {
+    go: (name: string, path: string) =>
+      window.history.pushState({ site: name }, "", path),
+  },
   measure: (str: string, fontSize?: number) => {
     const $helper = twoDollars.create("<span/>", { innerText: str });
 
@@ -92,19 +94,7 @@ const twoDollars: TwoDollars = {
     document.body.removeChild($helper);
     return measures;
   },
-
   parse: (str: string) => dp.parseFromString(str, "text/html"),
-
-  css: ($element: HTMLElement, props?: Record<string, string>) => {
-    props &&
-      Object.keys(props).forEach((key: string) =>
-        $element.style.setProperty(key, props[key])
-      );
-    return twoDollars;
-    // const v = window.getComputedStyle(elms)[obj];
-    // return v.slice(-2) === "px" && v.indexOf(" ") === -1 ? parseFloat(v) : v;
-  },
-
   parent: ($element: HTMLElement, selector?: string): HTMLElement => {
     if (!selector) return $element.parentNode as HTMLElement;
 
@@ -115,25 +105,20 @@ const twoDollars: TwoDollars = {
 
     return selectorMatch($element.parentNode as HTMLElement, selector);
   },
-
   hasClass: (element: HTMLElement, cn: string) =>
     element.classList.contains(cn),
-
   addClass: (element: HTMLElement, cn: string) => {
     !element.classList.contains(cn) && element.classList.add(cn);
     return twoDollars;
   },
-
   removeClass: (element: HTMLElement, cn: string) => {
     element.classList.contains(cn) && element.classList.remove(cn);
     return twoDollars;
   },
-
   toggleClass: (element: HTMLElement, cn: string) => {
     element.classList.toggle(cn);
     return twoDollars;
   },
-
   addAttr: (element: HTMLElement, attributes?: Record<string, string>) => {
     attributes &&
       Object.keys(attributes).forEach((key: string) =>
@@ -141,37 +126,13 @@ const twoDollars: TwoDollars = {
       );
     return twoDollars;
   },
-
   ucFirst: (str: string) => str.charAt(0).toUpperCase() + str.slice(1),
-
   // @todo immutability of param 'target'
-  extend: (
-    target: Record<string, string>,
-    extension: Record<string, string> = {}
-  ) => {
-    Object.keys(extension).forEach(
-      (key: string) => (target[key] = extension[key])
-    );
-    return target;
-  },
-
+  merge: (obj1, obj2) => deepmerge(obj1, obj2),
   index: ($element: HTMLElement) => {
     const $parent = $element.parentNode as HTMLElement;
     return Array.prototype.indexOf.call($parent.childNodes, $element);
   },
-
-  listen: (event: DomEvent) => {
-    const { handler, target, type } = event;
-    target.addEventListener(type, handler);
-    return twoDollars;
-  },
-
-  destroy: (event: DomEvent) => {
-    const { handler, target, type } = event;
-    if (handler) target.removeEventListener(type, handler);
-    return twoDollars;
-  },
-
   post: (url: string, data: Record<string, string>) => {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -182,7 +143,6 @@ const twoDollars: TwoDollars = {
       xhr.onerror = (error) => reject(error);
     });
   },
-
   preload: (opt: PreloadOptions) => {
     const { items, onFileLoaded, onFinish } = opt;
     const toLoad = items.length;
@@ -200,11 +160,6 @@ const twoDollars: TwoDollars = {
       };
       img.src = item;
     });
-  },
-
-  history: {
-    go: (name: string, path: string) =>
-      window.history.pushState({ site: name }, "", path),
   },
 };
 

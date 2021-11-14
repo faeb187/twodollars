@@ -43,5 +43,8 @@
     "typescript": "^3.9.10",
     "webpack": "^5.57.1",
     "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "deepmerge": "^4.2.2"
   }
 }
